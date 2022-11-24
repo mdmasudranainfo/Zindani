@@ -10,6 +10,9 @@ const Navbar = () => {
       <li>
         <Link to="/addproduct">Add Product</Link>
       </li>
+      <li>
+        <Link to="/allproduct">Product</Link>
+      </li>
     </>
   );
   return (
@@ -39,7 +42,10 @@ const Navbar = () => {
             {menuItem}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link
+          to="/"
+          className="btn btn-ghost normal-case text-xl text-green-700 font-bold"
+        >
           ZINDANI
         </Link>
       </div>
@@ -47,7 +53,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn">Get started</Link>
+        <Link className="btn bg-green-700">Login</Link>
       </div>
     </div>
   );

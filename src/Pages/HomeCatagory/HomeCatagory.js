@@ -16,7 +16,7 @@ const HomeCatagory = () => {
         <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
           <div>
             <p className="inline-block px-3 py-px mb-4 text-3xl font-semibold tracking-wider text-neutral uppercase rounded-full bg-teal-accent-400">
-              <div className="flex justify-center items-center gap-1">
+              <div className="flex justify-center items-center gap-1 text-green-700">
                 Our Catagory
               </div>
             </p>
@@ -32,7 +32,7 @@ const HomeCatagory = () => {
                     src={catagory?.image}
                     alt="Person"
                   />
-                  <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+                  <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-green-700 bg-opacity-75 opacity-0 hover:opacity-100">
                     <p className="mb-1 text-lg font-bold text-white">
                       {catagory?.name}
                     </p>

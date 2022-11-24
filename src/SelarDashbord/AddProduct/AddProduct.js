@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
@@ -6,6 +7,7 @@ const AddProduct = () => {
   const { user } = useContext(AuthContext);
 
   const category = useLoaderData();
+  //   console.log(category);
 
   const adProHanler = (event) => {
     event.preventDefault();
@@ -16,6 +18,7 @@ const AddProduct = () => {
     const resellPrice = from.resellPrice.value;
     const yearsOfUsed = from.yearsOfUsed.value;
     const picture = from.picture.files[0];
+    const category = from.category.value;
 
     //
     const formData = new FormData();
@@ -38,11 +41,21 @@ const AddProduct = () => {
           resellPrice,
           yearsOfUsed,
           productImage,
+          category,
         };
-        fetch("http://localhost:5000/products")
+
+        fetch("http://localhost:5000/products", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productInfo),
+        })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
+            from.reset();
+            toast.success("Product Added successfully");
           })
           .catch((err) => console(err));
 
@@ -125,9 +138,11 @@ const AddProduct = () => {
 
           <div>
             <label className="text-gray-700 ">Product Picture</label>
-            <select className="select select-bordered w-full">
+            <select name="category" className="select select-bordered w-full">
               {category?.map((cat) => (
-                <option key={cat?._id}>{cat?.name}</option>
+                <option key={cat?._id} value={cat?.name}>
+                  {cat?.name}
+                </option>
               ))}
             </select>
           </div>

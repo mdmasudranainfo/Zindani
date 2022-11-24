@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Main from "./Layout/Main";
+import AllProduct from "./Pages/AllProduct/AllProduct";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/allproduct",
+        element: <AllProduct></AllProduct>,
+        loader: () => fetch("http://localhost:5000/products"),
       },
     ],
   },
