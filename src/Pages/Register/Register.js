@@ -45,8 +45,8 @@ const Register = () => {
             setSpiner(false);
             // updtend
             update(name, imageData.data.url).then((data) => {
-              console.log(data);
               toast.success("Login Success");
+              saveUser(name, email, role, imageData.data.url);
 
               setSpiner(false);
             });
@@ -62,6 +62,30 @@ const Register = () => {
         setSpiner(false);
       });
   };
+  const saveUser = (name, email, role, image) => {
+    const userInfo = {
+      name,
+      email,
+      role,
+      image,
+    };
+    fetch("http://localhost:5000/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Register Success");
+        }
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="xl:ml-20 xl:w-5/12 mx-auto mt-5 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 p-5">
       <h1 className="text-2xl font-semibold text-center my-3">Register</h1>

@@ -1,16 +1,13 @@
 [
   {
-    "_id": "1",
     "name": "Feature Phone",
     "image": "https://i.ibb.co/7QXDfnQ/1.png"
   },
   {
-    "_id": "2",
     "name": "Smart Phone",
     "image": "https://i.ibb.co/dgrGMr9/2.png"
   },
   {
-    "_id": "1",
     "name": "Flagship Phone",
     "image": "https://i.ibb.co/kG0fSQC/3.png"
   }

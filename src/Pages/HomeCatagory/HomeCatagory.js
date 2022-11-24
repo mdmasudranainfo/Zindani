@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HomeCatagory = () => {
   const [categorys, setCatagory] = useState([]);
   useEffect(() => {
-    fetch("Catagory.json")
+    fetch("http://localhost:5000/category")
       .then((res) => res.json())
       .then((data) => setCatagory(data));
   }, []);
@@ -23,18 +23,18 @@ const HomeCatagory = () => {
           </div>
         </div>
         <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {categorys.map((catagory) => (
-            <Link key={catagory._id}>
+          {categorys?.map((catagory) => (
+            <Link key={catagory?._id}>
               <div>
                 <div className="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
                   <img
                     className="object-cover w-full h-56 md:h-64 xl:h-80"
-                    src={catagory.image}
+                    src={catagory?.image}
                     alt="Person"
                   />
                   <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                     <p className="mb-1 text-lg font-bold text-white">
-                      {catagory.name}
+                      {catagory?.name}
                     </p>
 
                     <div className="flex items-center justify-center space-x-3">

@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const AddProduct = () => {
-  const data = useContext(AuthContext);
-  console.log(data);
+  const { user } = useContext(AuthContext);
+
+  const category = useLoaderData();
+
   const adProHanler = (event) => {
     event.preventDefault();
     const from = event.target;
@@ -26,7 +29,26 @@ const AddProduct = () => {
     })
       .then((res) => res.json())
       .then((imageData) => {
-        console.log(imageData.data.url);
+        const productImage = imageData.data.url;
+        // console.log(imageData.data.url);
+        const productInfo = {
+          productName,
+          location,
+          orginalPrice,
+          resellPrice,
+          yearsOfUsed,
+          productImage,
+        };
+        fetch("http://localhost:5000/products")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => console(err));
+
+        // post products
+
+        //
       });
 
     //
@@ -104,11 +126,9 @@ const AddProduct = () => {
           <div>
             <label className="text-gray-700 ">Product Picture</label>
             <select className="select select-bordered w-full">
-              <option disabled selected>
-                Who shot first?
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
+              {category?.map((cat) => (
+                <option key={cat?._id}>{cat?.name}</option>
+              ))}
             </select>
           </div>
         </div>
