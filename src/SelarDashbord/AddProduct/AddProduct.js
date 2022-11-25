@@ -2,21 +2,30 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import loaderImage from "../../Assets/loader.gif";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
 
+  const [loader, setLoader] = useState(false);
+
   const category = useLoaderData();
-  //   console.log(category);
+  const date = new Date().toLocaleDateString();
+  const time = new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const adProHanler = (event) => {
     event.preventDefault();
+    setLoader(true);
     const from = event.target;
     const productName = from.productName.value;
     const location = from.location.value;
     const orginalPrice = from.orginalPrice.value;
     const resellPrice = from.resellPrice.value;
     const yearsOfUsed = from.yearsOfUsed.value;
+    const phone = from.phone.value;
     const picture = from.picture.files[0];
     const category = from.category.value;
 
@@ -42,7 +51,13 @@ const AddProduct = () => {
           yearsOfUsed,
           productImage,
           category,
+          date,
+          time,
+          phone,
+          SallerName: user.displayName,
+          SallerEmail: user.email,
         };
+        console.log(category);
 
         fetch("http://localhost:5000/products", {
           method: "POST",
@@ -55,6 +70,7 @@ const AddProduct = () => {
           .then((data) => {
             console.log(data);
             from.reset();
+            setLoader(false);
             toast.success("Product Added successfully");
           })
           .catch((err) => console(err));
@@ -70,6 +86,9 @@ const AddProduct = () => {
   };
   return (
     <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-m">
+      <div className="flex justify-center">
+        {loader && <img className="w-24 " src={loaderImage} alt="" />}
+      </div>
       <h2 className="text-lg font-semibold text-gray-700 capitalize ">
         Add Product
       </h2>
@@ -83,6 +102,7 @@ const AddProduct = () => {
             <input
               name="productName"
               type="text"
+              required
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:outline-none focus:ring"
             />
           </div>
@@ -94,6 +114,19 @@ const AddProduct = () => {
             <input
               name="location"
               type="text"
+              required
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+            />
+          </div>
+
+          <div>
+            <label className="text-gray-700 " for="phone">
+              Phone Number
+            </label>
+            <input
+              name="phone"
+              type="number"
+              required
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
             />
           </div>
@@ -105,6 +138,7 @@ const AddProduct = () => {
             <input
               name="orginalPrice"
               type="number"
+              required
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
             />
           </div>
@@ -114,6 +148,7 @@ const AddProduct = () => {
             <input
               name="resellPrice"
               type="number"
+              required
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
             />
           </div>
@@ -123,6 +158,7 @@ const AddProduct = () => {
             <input
               name="yearsOfUsed"
               type="text"
+              required
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
             />
           </div>
@@ -132,7 +168,8 @@ const AddProduct = () => {
             <input
               name="picture"
               type="file"
-              className=" file-input w-full mt-2 file-input-bordered"
+              required
+              className="file-input file-input-bordered file-input-success w-full max-w-xs"
             />
           </div>
 
@@ -149,8 +186,8 @@ const AddProduct = () => {
         </div>
 
         <div className="flex justify-center mt-6">
-          <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-            Save
+          <button className="px-8 py-2.5 leading-5 text-white bg-green-700 transition-colors duration-300 transform rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            Add Product
           </button>
         </div>
       </form>

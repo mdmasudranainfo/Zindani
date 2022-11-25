@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { login, googleLog } = useContext(AuthContext);
   //   googleLogin start
   const googleHandler = () => {
@@ -12,6 +13,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(result);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -27,6 +29,7 @@ const Login = () => {
     login(email, password)
       .then((data) => {
         console.log(data.user);
+        navigate("/");
         toast.success("Login successful");
       })
       .catch((err) => {

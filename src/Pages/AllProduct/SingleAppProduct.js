@@ -19,7 +19,7 @@ const SingleAppProduct = ({ product }) => {
         </div>
         <div className="card-actions justify-between">
           <button className="btn btn-error ">Report</button>
-          <button className="btn btn-outline border-0 text-white bg-green-600">
+          <button className="btn btn-primary border-0 text-whit">
             Buy Now
           </button>
         </div>

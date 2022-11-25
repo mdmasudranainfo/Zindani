@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/UserContext";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  console.log(user);
+  const LogOutHanler = () => {
+    logout()
+      .then((data) => {
+        console.log(data);
+        toast.success("Logout Success");
+      })
+      .catch((err) => console.log(err));
+  };
   const menuItem = (
     <>
       <li>
@@ -13,10 +25,13 @@ const Navbar = () => {
       <li>
         <Link to="/allproduct">Product</Link>
       </li>
+      <li>
+        <Link to="/myproduct">My Product</Link>
+      </li>
     </>
   );
   return (
-    <div className="navbar">
+    <div className="navbar bg-white sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -44,7 +59,7 @@ const Navbar = () => {
         </div>
         <Link
           to="/"
-          className="btn btn-ghost normal-case text-xl text-green-700 font-bold"
+          className="btn btn-ghost normal-case text-xl text-primary font-bold"
         >
           ZINDANI
         </Link>
@@ -52,8 +67,47 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
       </div>
-      <div className="navbar-end">
-        <Link className="btn bg-green-700">Login</Link>
+      {/* <div className="navbar-end">
+        {user ? (
+          <Link className="btn border-0 bg-green-700">{user.displayName}</Link>
+        ) : (
+          <Link to="/login" className="btn border-0 bg-green-700">
+            Login
+          </Link>
+        )}
+      </div> */}
+
+      <div className="dropdown dropdown-end">
+        {user ? (
+          <>
+            {" "}
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img alt="" src={user?.photoURL} />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {user ? <></> : <Link to="/login"></Link>}
+              <li>
+                <Link className="justify-between">
+                  {user?.displayName}
+                  <span className="badge bg-primary">Seller</span>
+                </Link>
+              </li>
+
+              <li>
+                <button onClick={logout}>Logout</button>
+              </li>
+            </ul>
+          </>
+        ) : (
+          <Link to="/login" className="btn border-0 bg-green-700">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

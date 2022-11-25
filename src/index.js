@@ -6,13 +6,25 @@ import reportWebVitals from "./reportWebVitals";
 import UserContext from "./Context/UserContext";
 import { Toaster } from "react-hot-toast";
 
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UserContext>
-      <App />
-      <Toaster />
-    </UserContext>
+    <QueryClientProvider client={queryClient}>
+      <UserContext>
+        <App />
+        <Toaster />
+      </UserContext>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
