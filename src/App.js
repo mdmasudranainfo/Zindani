@@ -1,11 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import CategoryProduct from "./CategoryProduct/CategoryProduct";
+import Dashbord from "./Dashbord/Dashbord";
+import WellComePage from "./Dashbord/wellComePage";
+import DashbordLayout from "./Layout/DashbordLayout";
 import Main from "./Layout/Main";
 import AllProduct from "./Pages/AllProduct/AllProduct";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import PrivateRoute from "./Route/PrivateRoute/PrivateRoute";
 import AddProduct from "./SelarDashbord/AddProduct/AddProduct";
 import MyProduct from "./SelarDashbord/MyProduct/MyProduct";
 
@@ -44,7 +48,39 @@ const router = createBrowserRouter([
       },
       {
         path: "myproduct",
-        element: <MyProduct></MyProduct>,
+        element: (
+          <PrivateRoute>
+            <MyProduct></MyProduct>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/dashbord",
+    element: <DashbordLayout></DashbordLayout>,
+    children: [
+      {
+        path: "/dashbord",
+        element: (
+          <PrivateRoute>
+            <Dashbord></Dashbord>
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: "/dashbord/",
+            element: <WellComePage></WellComePage>,
+          },
+          {
+            path: "/dashbord/myproduct",
+            element: (
+              <PrivateRoute>
+                <MyProduct></MyProduct>
+              </PrivateRoute>
+            ),
+          },
+        ],
       },
     ],
   },

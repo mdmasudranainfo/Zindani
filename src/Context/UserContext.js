@@ -22,6 +22,7 @@ const UserContext = ({ children }) => {
   //
   //register user
   const register = (email, password) => {
+    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -35,25 +36,29 @@ const UserContext = ({ children }) => {
 
   // singIn
   const login = (email, password) => {
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   // google login
   const googleLog = () => {
+    setLoader(true);
     return signInWithPopup(auth, GoogleProvider);
   };
   // logOut
   const logout = () => {
+    setLoader(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (CurrntUser) => {
       setUser(CurrntUser);
+      setLoader(false);
     });
     return () => unSubscribe();
   }, []);
 
-  const userInfo = { logout, user, register, update, login, googleLog };
+  const userInfo = { loader, logout, user, register, update, login, googleLog };
 
   //
   return (

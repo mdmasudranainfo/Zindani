@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import loaderImage from "../../Assets/loader.gif";
+import SpinerLoader from "../../SpinerLoader/SpinerLoader";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -86,9 +87,7 @@ const AddProduct = () => {
   };
   return (
     <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-m">
-      <div className="flex justify-center">
-        {loader && <img className="w-24 " src={loaderImage} alt="" />}
-      </div>
+      <div className="flex justify-center"></div>
       <h2 className="text-lg font-semibold text-gray-700 capitalize ">
         Add Product
       </h2>
@@ -186,9 +185,13 @@ const AddProduct = () => {
         </div>
 
         <div className="flex justify-center mt-6">
-          <button className="px-8 py-2.5 leading-5 text-white bg-green-700 transition-colors duration-300 transform rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-            Add Product
-          </button>
+          {loader ? (
+            <SpinerLoader></SpinerLoader>
+          ) : (
+            <button className="px-8 py-2.5 leading-5 text-white bg-green-700 transition-colors duration-300 transform rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+              Add Product
+            </button>
+          )}
         </div>
       </form>
     </section>

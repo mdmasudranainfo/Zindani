@@ -1,19 +1,21 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { login, googleLog } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   //   googleLogin start
   const googleHandler = () => {
     googleLog()
       .then((result) => {
         const user = result.user;
         console.log(result);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -27,15 +29,19 @@ const Login = () => {
     const email = from.email.value;
     const password = from.password.value;
     login(email, password)
-      .then((data) => {
-        console.log(data.user);
-        navigate("/");
-        toast.success("Login successful");
+      .then((result) => {
+        const user = result.user;
+
+        toast.success("Login Success");
+        navigate(from, { replace: true });
+
+        console.log(user);
       })
       .catch((err) => {
-        toast.error(err.message);
+        // toast.error(err.message);
+        console.log(err);
       });
-    console.log(email, password);
+    // console.log(email, password);
   };
   return (
     <div className="xl:ml-20 xl:w-5/12 mx-auto mt-5 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 p-5">

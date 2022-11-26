@@ -23,7 +23,7 @@ const MyProduct = () => {
     return <SpinerLoader></SpinerLoader>;
   }
   return (
-    <div>
+    <div className="mt-5">
       <h1>My Product</h1>
       <div className="">{isLoading && user && <img src={image} alt="" />}</div>
       <div className="overflow-x-auto w-full">

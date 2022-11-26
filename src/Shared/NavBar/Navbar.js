@@ -50,6 +50,7 @@ const Navbar = () => {
               />
             </svg>
           </label>
+
           <ul
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
@@ -63,6 +64,9 @@ const Navbar = () => {
         >
           ZINDANI
         </Link>
+        <label htmlFor="dashbord-drawer" className="btn btn-primary lg:hidden ">
+          x
+        </label>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
@@ -80,12 +84,12 @@ const Navbar = () => {
       <div className="dropdown dropdown-end">
         {user ? (
           <>
-            {" "}
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img alt="" src={user?.photoURL} />
               </div>
             </label>
+
             <ul
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
@@ -96,6 +100,9 @@ const Navbar = () => {
                   {user?.displayName}
                   <span className="badge bg-primary">Seller</span>
                 </Link>
+              </li>
+              <li>
+                <Link to="/dashbord">Dashbord</Link>
               </li>
 
               <li>
