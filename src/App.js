@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AllSeller from "./AdminDashbord/AllSeller/AllSeller";
+import AllUser from "./AdminDashbord/AllUser/AllUser";
 import "./App.css";
 import CategoryProduct from "./CategoryProduct/CategoryProduct";
 import Dashbord from "./Dashbord/Dashbord";
@@ -23,11 +25,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      {
-        path: "/addproduct",
-        element: <AddProduct></AddProduct>,
-        loader: () => fetch("http://localhost:5000/category"),
-      },
+
       {
         path: "/register",
         element: <Register></Register>,
@@ -55,6 +53,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/myorders",
         element: (
@@ -88,6 +87,19 @@ const router = createBrowserRouter([
                 <MyProduct></MyProduct>
               </PrivateRoute>
             ),
+          },
+          {
+            path: "dashbord/addproduct/",
+            element: <AddProduct></AddProduct>,
+            loader: () => fetch("http://localhost:5000/category"),
+          },
+          {
+            path: "dashbord/alluser/",
+            element: <AllUser></AllUser>,
+          },
+          {
+            path: "dashbord/allseller/",
+            element: <AllSeller></AllSeller>,
           },
         ],
       },

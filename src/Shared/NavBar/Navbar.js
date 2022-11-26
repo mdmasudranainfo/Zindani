@@ -19,9 +19,7 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/addproduct">Add Product</Link>
-      </li>
+
       <li>
         <Link to="/allproduct">Product</Link>
       </li>
@@ -83,7 +81,7 @@ const Navbar = () => {
         )}
       </div> */}
 
-      <div className="dropdown dropdown-end">
+      <div className="dropdown dropdown-end ">
         {user ? (
           <>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

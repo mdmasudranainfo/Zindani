@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
 import image from "../../Assets/loader.gif";
 import SpinerLoader from "../../SpinerLoader/SpinerLoader";
+import toast from "react-hot-toast";
 
 const MyProduct = () => {
   const { user } = useContext(AuthContext);
@@ -19,6 +20,32 @@ const MyProduct = () => {
         (res) => res.json()
       ),
   });
+  //  deleteHanler
+
+  const deleteHanler = (id) => {
+    const agree = window.confirm("Are you sure you want to delete");
+    console.log(id);
+
+    if (agree) {
+      fetch(`http://localhost:5000/delete/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.acknowledged) {
+            toast.success("Deleted successfully");
+            refetch();
+          }
+        })
+        .then((data) => console.log(data));
+    }
+  };
+
+  // advataize
+  const advataize = (id) => {};
+
+  //
   if (isLoading && user) {
     return <SpinerLoader></SpinerLoader>;
   }
@@ -45,7 +72,7 @@ const MyProduct = () => {
             {producs?.map((product) => (
               <tr key={product._id}>
                 <th>
-                  <button>
+                  <button onClick={() => deleteHanler(product._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -91,7 +118,10 @@ const MyProduct = () => {
                   {product?.date}/<br /> {product?.time}
                 </td>
                 <th>
-                  <button className="btn btn-ghost bg-green-600 btn-xs">
+                  <button
+                    onClick={() => advataize(product?._id)}
+                    className="btn btn-ghost bg-green-600 btn-xs"
+                  >
                     Advatize
                   </button>
                 </th>

@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashbord = () => {
   const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
+  console.log(isAdmin.isAdmin);
   return (
     <div>
       <div className="drawer drawer-mobile">
@@ -27,8 +30,19 @@ const Dashbord = () => {
               <Link to="/dashbord/myproduct">My Product</Link>
             </li>
             <li>
-              <Link to="/dashbord/addproduct">Add Product</Link>
+              <Link to="dashbord/addproduct/">Add Product</Link>
             </li>
+            {isAdmin.isAdmin && (
+              <li>
+                <Link to="dashbord/alluser/">All User</Link>
+              </li>
+            )}
+
+            {isAdmin.isAdmin && (
+              <li>
+                <Link to="dashbord/allseller/">All Seller</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
