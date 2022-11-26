@@ -20,6 +20,7 @@ const Register = () => {
     const password = form.password.value;
     const image = form.image.files[0];
     const role = form.role.value;
+
     // console.log(image);
     //
     const formData = new FormData();

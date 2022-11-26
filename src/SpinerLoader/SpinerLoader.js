@@ -3,7 +3,7 @@ import { Puff } from "react-loader-spinner";
 
 const SpinerLoader = () => {
   return (
-    <div>
+    <div className="flex justify-center">
       <Puff
         height="80"
         width="80"

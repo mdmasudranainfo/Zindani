@@ -18,7 +18,7 @@ const CategoryProduct = () => {
           ></CategoryProductSingle>
         ))}
       </div>
-      <BuyBodal pdc={pdc}></BuyBodal>
+      {pdc && <BuyBodal setPdc={setPdc} pdc={pdc}></BuyBodal>}
     </div>
   );
 };

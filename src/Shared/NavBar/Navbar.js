@@ -5,7 +5,7 @@ import { AuthContext } from "../../Context/UserContext";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const LogOutHanler = () => {
     logout()
       .then((data) => {
@@ -25,9 +25,11 @@ const Navbar = () => {
       <li>
         <Link to="/allproduct">Product</Link>
       </li>
-      <li>
-        <Link to="/myproduct">My Product</Link>
-      </li>
+      {user && (
+        <li>
+          <Link to="/myorders">My Orders</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -62,7 +64,7 @@ const Navbar = () => {
           to="/"
           className="btn btn-ghost normal-case text-xl text-primary font-bold"
         >
-          ZINDANI
+          ZDN
         </Link>
         <label htmlFor="dashbord-drawer" className="btn btn-primary lg:hidden ">
           x

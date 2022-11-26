@@ -8,6 +8,7 @@ import Main from "./Layout/Main";
 import AllProduct from "./Pages/AllProduct/AllProduct";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
+import MyOrder from "./Pages/MyOrder/MyOrder";
 import Register from "./Pages/Register/Register";
 import PrivateRoute from "./Route/PrivateRoute/PrivateRoute";
 import AddProduct from "./SelarDashbord/AddProduct/AddProduct";
@@ -51,6 +52,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyProduct></MyProduct>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myorders",
+        element: (
+          <PrivateRoute>
+            <MyOrder></MyOrder>
           </PrivateRoute>
         ),
       },
