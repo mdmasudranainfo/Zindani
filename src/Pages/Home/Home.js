@@ -1,4 +1,5 @@
 import React from "react";
+import SellYourProduct from "../ExtraSection/SellYourProduct";
 import HomeCatagory from "../HomeCatagory/HomeCatagory";
 import Slider from "../Slider/Slider";
 
@@ -7,6 +8,7 @@ const Home = () => {
     <div>
       <Slider></Slider>
       <HomeCatagory></HomeCatagory>
+      <SellYourProduct></SellYourProduct>
     </div>
   );
 };

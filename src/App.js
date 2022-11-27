@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AllSeller from "./AdminDashbord/AllSeller/AllSeller";
 import AllUser from "./AdminDashbord/AllUser/AllUser";
+import TotalProduct from "./AdminDashbord/TotalProduct/TotalProduct";
 import "./App.css";
 import CategoryProduct from "./CategoryProduct/CategoryProduct";
 import Dashbord from "./Dashbord/Dashbord";
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: "dashbord/addproduct/",
+            path: "/dashbord/addproduct/",
             element: <AddProduct></AddProduct>,
             loader: () => fetch("http://localhost:5000/category"),
           },
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
           {
             path: "dashbord/allseller/",
             element: <AllSeller></AllSeller>,
+          },
+          {
+            path: "dashbord/allproduct/",
+            element: <TotalProduct></TotalProduct>,
           },
         ],
       },

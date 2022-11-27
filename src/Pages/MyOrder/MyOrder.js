@@ -1,16 +1,45 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/UserContext";
 
 const MyOrder = () => {
   const { user } = useContext(AuthContext);
-  const { data: producs = [] } = useQuery({
+  const { data: producs = [], refetch } = useQuery({
     queryKey: ["buyproduct"],
     queryFn: () =>
       fetch(`http://localhost:5000/buyproduct?email=${user.email}`).then(
         (res) => res.json()
       ),
   });
+
+  //   detele Hanler
+  const deleteHanler = (id) => {
+    const agree = window.confirm("Are you sure you want to delete");
+
+    if (agree) {
+      fetch(`http://localhost:5000/buydelete/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.acknowledged) {
+            toast.success("Deleted successfully");
+            refetch();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  if (producs.length === 0) {
+    return (
+      <div className="text-center my-5 text-error">
+        <h2 className="text-xl">Have not Product</h2>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -35,7 +64,7 @@ const MyOrder = () => {
             {producs?.map((product) => (
               <tr key={product._id}>
                 <th>
-                  <button>
+                  <button onClick={() => deleteHanler(product._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

@@ -7,8 +7,8 @@ const useAdmin = (email) => {
       fetch(`http://localhost:5000/role/${email}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          setIsAdmin(data);
+          // console.log(data);
+          setIsAdmin(data.isAdmin);
         });
     }
   }, [email]);

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
-import loaderImage from "../../Assets/loader.gif";
+
 import SpinerLoader from "../../SpinerLoader/SpinerLoader";
 
 const AddProduct = () => {
