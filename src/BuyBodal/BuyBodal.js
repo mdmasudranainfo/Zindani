@@ -65,12 +65,7 @@ const BuyBodal = ({ pdc, setPdc }) => {
           <h3 className="text-lg font-bold">{pdc?.productName}</h3>
           <div className="">
             <p className="text-xl font-semibold">Price: {pdc?.resellPrice}$</p>
-            <p className="text-xl font-semibold ">
-              Saller: {pdc?.SallerName}
-              <span className=" ml-2 indicator-item badge badge-primary">
-                verified
-              </span>
-            </p>
+            <p className="text-xl font-semibold ">Saller: {pdc?.SallerName}</p>
           </div>
           <form onSubmit={submitHanlar}>
             <div className="mt-3">
