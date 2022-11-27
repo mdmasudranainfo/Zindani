@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BuyBodal from "../BuyBodal/BuyBodal";
+import { AuthContext } from "../Context/UserContext";
 
 const CategoryProductSingle = ({ product, setPdc }) => {
+  const [verifyUser, setVerifyUser] = useState({});
+  useEffect(() => {
+    fetch(`http://localhost:5000/user/${product.SallerEmail}`)
+      .then((res) => res.json())
+      .then((data) => setVerifyUser(data))
+      .catch((err) => console.log(err));
+  }, [product.SallerEmail]);
+
+  console.log(product);
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure>
@@ -13,9 +23,11 @@ const CategoryProductSingle = ({ product, setPdc }) => {
           <p className="text-xl font-semibold">Price: {product.resellPrice}$</p>
           <p className="text-xl font-semibold ">
             Saller: {product?.SallerName}
-            <span className=" ml-2 indicator-item badge badge-primary">
-              verified
-            </span>
+            {verifyUser?.verify && (
+              <span className=" ml-2 indicator-item badge badge-primary">
+                verified
+              </span>
+            )}
           </p>
           <p className="text-xl font-semibold ">Phone: {product?.phone}</p>
           <p className="text-xl font-semibold ">Date : {product?.date}</p>

@@ -95,15 +95,15 @@ const router = createBrowserRouter([
             loader: () => fetch("http://localhost:5000/category"),
           },
           {
-            path: "dashbord/alluser/",
+            path: "/dashbord/alluser/",
             element: <AllUser></AllUser>,
           },
           {
-            path: "dashbord/allseller/",
+            path: "/dashbord/allseller/",
             element: <AllSeller></AllSeller>,
           },
           {
-            path: "dashbord/allproduct/",
+            path: "/dashbord/allproduct/",
             element: <TotalProduct></TotalProduct>,
           },
         ],

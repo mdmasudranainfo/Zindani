@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import toast from "react-hot-toast";
 
 const AllSeller = () => {
   const { data: sellers = [] } = useQuery({
@@ -7,10 +8,26 @@ const AllSeller = () => {
     queryFn: () =>
       fetch("http://localhost:5000/seller").then((res) => res.json()),
   });
-  console.log(sellers);
+
+  const updateHanler = (id) => {
+    const agree = window.confirm("Are you sure you want to update");
+    if (agree) {
+      fetch(`http://localhost:5000/user/${id}`, {
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Verify Success");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   return (
     <div>
-      <h1>Totall Sellers: {sellers.length}</h1>
+      <h1>Totall Sallers: {sellers.length}</h1>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead className="text-center">
@@ -69,7 +86,12 @@ const AllSeller = () => {
                 </td>
 
                 <td>
-                  <button className="btn btn-primary btn-xs">Verify</button>
+                  <button
+                    onClick={() => updateHanler(usr?._id)}
+                    className="btn btn-primary btn-xs"
+                  >
+                    Verify
+                  </button>
                 </td>
                 <td>
                   <button className="btn btn-xs ">Delete</button>

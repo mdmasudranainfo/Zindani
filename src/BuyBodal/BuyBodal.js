@@ -71,13 +71,6 @@ const BuyBodal = ({ pdc, setPdc }) => {
                 verified
               </span>
             </p>
-            <p className="text-xl font-semibold ">Phone: {pdc?.phone}</p>
-            <p className="text-xl font-semibold ">Date : {pdc?.date}</p>
-            <p className="text-xl font-semibold">
-              Orginal Price: {pdc?.orginalPrice}$
-            </p>
-            <p className="text-xl font-semibold">Used: {pdc?.yearsOfUsed}</p>
-            <p className="text-xl font-semibold">Location: {pdc?.location}</p>
           </div>
           <form onSubmit={submitHanlar}>
             <div className="mt-3">
@@ -101,12 +94,14 @@ const BuyBodal = ({ pdc, setPdc }) => {
                 name="phone"
                 placeholder="your phone number"
                 className="input input-bordered w-full mt-2"
+                required
               />
               <input
                 type="text"
                 name="meetLocation"
                 placeholder="Meeting Location"
                 className="input input-bordered w-full mt-2"
+                required
               />
             </div>
             <div className="modal-action flex justify-center">

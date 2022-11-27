@@ -8,7 +8,7 @@ const Dashbord = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
-  console.log(isSeller);
+  // console.log(isSeller);
   return (
     <div>
       <div className="drawer drawer-mobile">
@@ -27,6 +27,7 @@ const Dashbord = () => {
                 </div>
                 <h2 className="text-xl">{user?.displayName}</h2>
               </div>
+              <p>{user?.email}</p>
             </li>
 
             {isSeller && (

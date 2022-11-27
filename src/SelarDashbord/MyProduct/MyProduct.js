@@ -43,11 +43,30 @@ const MyProduct = () => {
   };
 
   // advataize
-  const advataize = (id) => {};
+  const advataize = (id) => {
+    const agree = window.confirm("Are you sure you want to advise?");
+    if (agree) {
+      fetch(`http://localhost:5000/product/${id}`, {
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("advataize success");
+            refetch();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   //
   if (isLoading && user) {
     return <SpinerLoader></SpinerLoader>;
+  }
+
+  if (producs.length === 0) {
+    return <h2 className="text-xl text-error text-center">NO DATA</h2>;
   }
   return (
     <div className="mt-5">
@@ -65,30 +84,14 @@ const MyProduct = () => {
               <th>Product</th>
               <th>Price</th>
               <th>Favorite Color</th>
-              <th></th>
+              <th>Advatize</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {producs?.map((product) => (
+            {producs?.map((product, i) => (
               <tr key={product._id}>
-                <th>
-                  <button onClick={() => deleteHanler(product._id)}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-                      />
-                    </svg>
-                  </button>
-                </th>
+                <th>{i + 1}</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -114,15 +117,27 @@ const MyProduct = () => {
                     Orginal Price:{product?.orginalPrice}
                   </span>
                 </td>
-                <td>
-                  {product?.date}/<br /> {product?.time}
-                </td>
+                <td>{product?.date}</td>
+                <th>
+                  {product?.advrtized ? (
+                    <button className="btn btn-success btn-xs">
+                      Advrtized
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => advataize(product?._id)}
+                      className="btn btn-primary  btn-xs"
+                    >
+                      Advrtize
+                    </button>
+                  )}
+                </th>
                 <th>
                   <button
-                    onClick={() => advataize(product?._id)}
-                    className="btn btn-ghost bg-green-600 btn-xs"
+                    className="btn btn-xs"
+                    onClick={() => deleteHanler(product._id)}
                   >
-                    Advatize
+                    Delete
                   </button>
                 </th>
               </tr>

@@ -23,7 +23,7 @@ const AllUser = () => {
               </th>
               <th>Name</th>
               <th>Email</th>
-              <th>Verify</th>
+
               <th>Action</th>
             </tr>
           </thead>
@@ -69,9 +69,6 @@ const AllUser = () => {
                   <br />
                 </td>
 
-                <td>
-                  <button className="btn btn-primary btn-xs">Verify</button>
-                </td>
                 <td>
                   <button className="btn btn-xs ">Delete</button>
                 </td>
