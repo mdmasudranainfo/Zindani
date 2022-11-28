@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { register, update } = useContext(AuthContext);
   const [spiner, setSpiner] = useState(false);
   if (spiner) {
@@ -46,7 +47,6 @@ const Register = () => {
             setSpiner(false);
             // updtend
             update(name, imageData.data.url).then((data) => {
-              toast.success("Login Success");
               saveUser(name, email, role, imageData.data.url);
 
               setSpiner(false);
@@ -82,6 +82,7 @@ const Register = () => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Register Success");
+          navigate("/");
         }
         console.log(data);
       })

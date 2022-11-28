@@ -31,7 +31,7 @@ const Dashbord = () => {
             </li>
             {user && (
               <li>
-                <Link to="/myorders">My Orders</Link>
+                <Link to="/dashbord/myorders">My Orders</Link>
               </li>
             )}
 
@@ -58,11 +58,7 @@ const Dashbord = () => {
                 <Link to="/dashbord/allseller/">All Seller</Link>
               </li>
             )}
-            {isAdmin && (
-              <li>
-                <Link to="/dashbord/allproduct/">All Product</Link>
-              </li>
-            )}
+
             {isAdmin && (
               <li>
                 <Link to="/dashbord/report/">Report Items</Link>
