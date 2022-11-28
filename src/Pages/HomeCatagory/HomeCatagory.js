@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HomeCatagory = () => {
   const [categorys, setCatagory] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/category")
+    fetch("https://zindani-server.vercel.app/category")
       .then((res) => res.json())
       .then((data) => setCatagory(data));
   }, []);

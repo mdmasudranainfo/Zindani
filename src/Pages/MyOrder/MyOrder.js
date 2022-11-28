@@ -8,9 +8,9 @@ const MyOrder = () => {
   const { data: producs = [], refetch } = useQuery({
     queryKey: ["buyproduct"],
     queryFn: () =>
-      fetch(`http://localhost:5000/buyproduct?email=${user.email}`).then(
-        (res) => res.json()
-      ),
+      fetch(
+        `https://zindani-server.vercel.app/buyproduct?email=${user.email}`
+      ).then((res) => res.json()),
   });
 
   //   detele Hanler
@@ -18,7 +18,7 @@ const MyOrder = () => {
     const agree = window.confirm("Are you sure you want to delete");
 
     if (agree) {
-      fetch(`http://localhost:5000/buydelete/${id}`, {
+      fetch(`https://zindani-server.vercel.app/buydelete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -106,7 +106,7 @@ const MyOrder = () => {
                 <td>{product?.meetingLocation}</td>
                 <th>
                   <button className="btn btn-ghost bg-green-600 btn-xs">
-                    Advatize
+                    Pay
                   </button>
                 </th>
               </tr>

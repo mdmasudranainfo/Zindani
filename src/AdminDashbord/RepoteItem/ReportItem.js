@@ -11,7 +11,7 @@ const ReportItem = () => {
   } = useQuery({
     queryKey: ["products/reports"],
     queryFn: () =>
-      fetch(`http://localhost:5000/products/reports`)
+      fetch(`https://zindani-server.vercel.app/products/reports`)
         .then((res) => res.json())
         .catch((err) => console.log(err)),
   });
@@ -23,7 +23,7 @@ const ReportItem = () => {
     console.log(id);
 
     if (agree) {
-      fetch(`http://localhost:5000/delete/${id}`, {
+      fetch(`https://zindani-server.vercel.app/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

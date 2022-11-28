@@ -5,7 +5,7 @@ import SpinerLoader from "../../SpinerLoader/SpinerLoader";
 
 const PrivateRoute = ({ children }) => {
   const { user, loader } = useContext(AuthContext);
-  let location = useLocation();
+  const location = useLocation();
   if (loader) {
     return <SpinerLoader></SpinerLoader>;
   }

@@ -5,7 +5,7 @@ const useAdmin = (email) => {
   const [adminLoading, setAdminLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/role/${email}`)
+      fetch(`https://zindani-server.vercel.app/role/${email}`)
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

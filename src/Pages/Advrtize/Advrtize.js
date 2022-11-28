@@ -8,7 +8,9 @@ const Advrtize = () => {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["advataized"],
     queryFn: () =>
-      fetch("http://localhost:5000/advrtized").then((res) => res.json()),
+      fetch("https://zindani-server.vercel.app/advrtized").then((res) =>
+        res.json()
+      ),
   });
 
   //

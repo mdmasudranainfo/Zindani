@@ -48,9 +48,13 @@ const router = createBrowserRouter([
       },
       {
         path: "producs/:id",
-        element: <CategoryProduct></CategoryProduct>,
+        element: (
+          <PrivateRoute>
+            <CategoryProduct></CategoryProduct>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/producs/${params.id}`),
+          fetch(`https://zindani-server.vercel.app/producs/${params.id}`),
       },
       {
         path: "myproduct",
@@ -103,7 +107,7 @@ const router = createBrowserRouter([
                 <AddProduct></AddProduct>
               </SallerRoute>
             ),
-            loader: () => fetch("http://localhost:5000/category"),
+            loader: () => fetch("https://zindani-server.vercel.app/category"),
           },
           {
             path: "/dashbord/alluser/",

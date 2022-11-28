@@ -60,7 +60,7 @@ const AddProduct = () => {
         };
         console.log(category);
 
-        fetch("http://localhost:5000/products", {
+        fetch("https://zindani-server.vercel.app/products", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

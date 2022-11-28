@@ -71,7 +71,7 @@ const Register = () => {
       image,
       verify: false,
     };
-    fetch("http://localhost:5000/user", {
+    fetch("https://zindani-server.vercel.app/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

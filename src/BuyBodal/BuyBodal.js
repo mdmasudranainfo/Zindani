@@ -30,7 +30,7 @@ const BuyBodal = ({ pdc, setPdc }) => {
     // console.log(price);
 
     //
-    fetch("http://localhost:5000/buyproduct", {
+    fetch("https://zindani-server.vercel.app/buyproduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",

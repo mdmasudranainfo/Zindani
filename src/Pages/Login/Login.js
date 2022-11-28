@@ -14,7 +14,7 @@ const Login = () => {
     googleLog()
       .then((result) => {
         const user = result.user;
-        console.log(result);
+        // console.log(result);
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -29,18 +29,18 @@ const Login = () => {
     const email = from.email.value;
     const password = from.password.value;
     login(email, password)
-      .then((result) => {
-        const user = result.user;
-
+      .then((data) => {
         toast.success("Login Success");
-        navigate("/");
+        console.log(data);
 
-        console.log(user);
+        if (data.user.uid) {
+          navigate("/");
+        }
       })
       .catch((err) => {
-        // toast.error(err.message);
-        console.log(err);
+        toast.error(err.message);
       });
+
     // console.log(email, password);
   };
   return (

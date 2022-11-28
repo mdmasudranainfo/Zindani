@@ -5,14 +5,16 @@ const AllUser = () => {
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["allUser"],
     queryFn: () =>
-      fetch("http://localhost:5000/alluer").then((res) => res.json()),
+      fetch("https://zindani-server.vercel.app/alluer").then((res) =>
+        res.json()
+      ),
   });
 
   // delete User
   const deleteHanler = (id) => {
     const agree = window.confirm("are you sure you want to delete User?");
     if (agree) {
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://zindani-server.vercel.app/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

@@ -5,7 +5,7 @@ const useSeller = (email) => {
   const [sallerLoading, setSallerLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/roles/${email}`)
+      fetch(`https://zindani-server.vercel.app/roles/${email}`)
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

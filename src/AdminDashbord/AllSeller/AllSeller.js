@@ -6,13 +6,15 @@ const AllSeller = () => {
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ["sellers"],
     queryFn: () =>
-      fetch("http://localhost:5000/seller").then((res) => res.json()),
+      fetch("https://zindani-server.vercel.app/seller").then((res) =>
+        res.json()
+      ),
   });
 
   const updateHanler = (id) => {
     const agree = window.confirm("Are you sure you want to update");
     if (agree) {
-      fetch(`http://localhost:5000/user/${id}`, {
+      fetch(`https://zindani-server.vercel.app/user/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())
@@ -30,7 +32,7 @@ const AllSeller = () => {
   const deleteHanler = (id) => {
     const agree = window.confirm("are you sure you want to delete User?");
     if (agree) {
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://zindani-server.vercel.app/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -103,7 +105,9 @@ const AllSeller = () => {
 
                 <td>
                   {usr?.verify ? (
-                    <button className="btn btn-success btn-xs">Verifyed</button>
+                    <button className="btn btn-success btn-xs">
+                      verified{" "}
+                    </button>
                   ) : (
                     <button
                       onClick={() => updateHanler(usr?._id)}

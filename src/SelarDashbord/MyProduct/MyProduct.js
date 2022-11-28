@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const MyProduct = () => {
   const { user } = useContext(AuthContext);
 
-  // const url = `http://localhost:5000/myproducts?email=${user?.email}`;
+  // const url = `https://zindani-server.vercel.app/myproducts?email=${user?.email}`;
   const {
     data: producs = [],
     isLoading,
@@ -16,9 +16,9 @@ const MyProduct = () => {
   } = useQuery({
     queryKey: ["myproducts"],
     queryFn: () =>
-      fetch(`http://localhost:5000/myproducts?email=${user?.email}`).then(
-        (res) => res.json()
-      ),
+      fetch(
+        `https://zindani-server.vercel.app/myproducts?email=${user?.email}`
+      ).then((res) => res.json()),
   });
   //  deleteHanler
 
@@ -27,7 +27,7 @@ const MyProduct = () => {
     console.log(id);
 
     if (agree) {
-      fetch(`http://localhost:5000/delete/${id}`, {
+      fetch(`https://zindani-server.vercel.app/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -46,7 +46,7 @@ const MyProduct = () => {
   const advataize = (id) => {
     const agree = window.confirm("Are you sure you want to advise?");
     if (agree) {
-      fetch(`http://localhost:5000/product/${id}`, {
+      fetch(`https://zindani-server.vercel.app/product/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())

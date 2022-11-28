@@ -6,7 +6,7 @@ import { AuthContext } from "../Context/UserContext";
 const CategoryProductSingle = ({ product, setPdc }) => {
   const [verifyUser, setVerifyUser] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${product.SallerEmail}`)
+    fetch(`https://zindani-server.vercel.app/user/${product.SallerEmail}`)
       .then((res) => res.json())
       .then((data) => setVerifyUser(data))
       .catch((err) => console.log(err));
@@ -18,7 +18,7 @@ const CategoryProductSingle = ({ product, setPdc }) => {
       "Are you sure you want to report this product"
     );
     if (agree) {
-      fetch(`http://localhost:5000/reports/${id}`, {
+      fetch(`https://zindani-server.vercel.app/reports/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())
