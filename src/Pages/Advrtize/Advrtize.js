@@ -15,9 +15,13 @@ const Advrtize = () => {
   //
   const [pdc, setPdc] = useState(null);
 
+  if (isLoading) {
+    return <SpinerLoader></SpinerLoader>;
+  }
+
   return (
     <div className="">
-      <h1 className="text-3xl font-bold text-primary text-center uppercase">
+      <h1 className="text-3xl mb-5 font-bold text-primary text-center uppercase">
         Advrtized Products
       </h1>
       <div className="grid lg:grid-cols-2 gap-10">
@@ -29,7 +33,7 @@ const Advrtize = () => {
           ></AdvrtizeSingle>
         ))}
       </div>
-      <BuyBodal pdc={pdc} setPdc={setPdc}></BuyBodal>
+      {pdc && <BuyBodal pdc={pdc} setPdc={setPdc}></BuyBodal>}
     </div>
   );
 };

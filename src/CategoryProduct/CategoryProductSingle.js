@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import BuyBodal from "../BuyBodal/BuyBodal";
 import { AuthContext } from "../Context/UserContext";
 
@@ -11,7 +12,24 @@ const CategoryProductSingle = ({ product, setPdc }) => {
       .catch((err) => console.log(err));
   }, [product.SallerEmail]);
 
-  console.log(product);
+  // report items
+  const reportHanler = (id) => {
+    const agree = window.confirm(
+      "Are you sure you want to report this product"
+    );
+    if (agree) {
+      fetch(`http://localhost:5000/reports/${id}`, {
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Report Success");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure>
@@ -38,7 +56,12 @@ const CategoryProductSingle = ({ product, setPdc }) => {
           <p className="text-xl font-semibold">Location: {product?.location}</p>
         </div>
         <div className="card-actions justify-between">
-          <button className="btn btn-secondary ">Report</button>
+          <button
+            onClick={() => reportHanler(product?._id)}
+            className="btn btn-secondary "
+          >
+            Report
+          </button>
           {/* <button
             htmlFor="my-modal-3"
             className="btn btn-outline border-0 text-white bg-green-600"

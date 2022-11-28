@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/UserContext";
 const BuyBodal = ({ pdc, setPdc }) => {
   const { user } = useContext(AuthContext);
 
-  //   post buying data
+  //   post buying setPdc
   const submitHanlar = (event) => {
     event.preventDefault();
     const form = event.target;

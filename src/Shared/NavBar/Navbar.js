@@ -96,10 +96,7 @@ const Navbar = () => {
             >
               {user ? <></> : <Link to="/login"></Link>}
               <li>
-                <Link className="justify-between">
-                  {user?.displayName}
-                  <span className="badge bg-primary">Seller</span>
-                </Link>
+                <Link className="justify-between">{user?.displayName}</Link>
               </li>
               <li>
                 <Link to="/dashbord">Dashbord</Link>
