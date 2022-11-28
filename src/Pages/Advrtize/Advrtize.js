@@ -19,6 +19,10 @@ const Advrtize = () => {
     return <SpinerLoader></SpinerLoader>;
   }
 
+  if (products.length === 0) {
+    return <div></div>;
+  }
+
   return (
     <div className="">
       <h1 className="text-3xl mb-5 font-bold text-primary text-center uppercase">

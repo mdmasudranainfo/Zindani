@@ -120,9 +120,7 @@ const MyProduct = () => {
                 <td>{product?.date}</td>
                 <th>
                   {product?.advrtized ? (
-                    <button className="btn btn-success btn-xs">
-                      Advrtized
-                    </button>
+                    <button className="btn btn-success btn-xs">success</button>
                   ) : (
                     <button
                       onClick={() => advataize(product?._id)}

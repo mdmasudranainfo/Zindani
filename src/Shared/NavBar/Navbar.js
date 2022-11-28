@@ -19,10 +19,10 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-
       <li>
-        <Link to="/allproduct">Product</Link>
+        <Link to="/blog">Blog</Link>
       </li>
+
       {user && (
         <li>
           <Link to="/myorders">My Orders</Link>

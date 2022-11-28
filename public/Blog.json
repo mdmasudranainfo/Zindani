@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "1",
+    "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1621503743613/eGkZpP6mP.png",
+    "title": "What are the different ways to manage a state in a React application? ",
+    "description": "When we talk about state in our applications, it’s important to be clear about what types of state actually matter. There are four main types of state you need to properly manage in your React apps"
+  },
+  {
+    "_id": "2",
+    "image": "https://miro.medium.com/max/1400/1*OEMd8RbQYOc3aonG4MY0EQ.png",
+    "title": "How does prototypical inheritance work?",
+    "description": "The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object. getPrototypeOf and Object"
+  },
+  {
+    "_id": "3",
+    "image": "https://miro.medium.com/max/304/1*Eqete5eJr_8FnbrcqygzBg.png",
+    "title": "What is a unit test? Why should we write unit tests?",
+    "description": "The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages."
+  },
+  {
+    "_id": "4",
+    "title": "React vs. Angular vs. Vue?",
+    "image": "https://plainenglish.io/assets/post-content/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022.png",
+    "description": "Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option"
+  }
+]

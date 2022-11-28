@@ -3,7 +3,7 @@ import React from "react";
 import toast from "react-hot-toast";
 
 const AllSeller = () => {
-  const { data: sellers = [] } = useQuery({
+  const { data: sellers = [], refetch } = useQuery({
     queryKey: ["sellers"],
     queryFn: () =>
       fetch("http://localhost:5000/seller").then((res) => res.json()),
@@ -19,12 +19,28 @@ const AllSeller = () => {
         .then((data) => {
           if (data.acknowledged) {
             toast.success("Verify Success");
+            refetch();
           }
         })
         .catch((err) => console.log(err));
     }
   };
 
+  // delete Saller
+  const deleteHanler = (id) => {
+    const agree = window.confirm("are you sure you want to delete User?");
+    if (agree) {
+      fetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          refetch();
+        })
+        .catch((err) => console.log(err));
+    }
+  };
   return (
     <div>
       <h1>Totall Sallers: {sellers.length}</h1>
@@ -86,15 +102,24 @@ const AllSeller = () => {
                 </td>
 
                 <td>
-                  <button
-                    onClick={() => updateHanler(usr?._id)}
-                    className="btn btn-primary btn-xs"
-                  >
-                    Verify
-                  </button>
+                  {usr?.verify ? (
+                    <button className="btn btn-success btn-xs">Verifyed</button>
+                  ) : (
+                    <button
+                      onClick={() => updateHanler(usr?._id)}
+                      className="btn btn-primary btn-xs"
+                    >
+                      Verify
+                    </button>
+                  )}
                 </td>
                 <td>
-                  <button className="btn btn-xs ">Delete</button>
+                  <button
+                    onClick={() => deleteHanler(usr?._id)}
+                    className="btn btn-xs "
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

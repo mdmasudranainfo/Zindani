@@ -33,7 +33,7 @@ const Login = () => {
         const user = result.user;
 
         toast.success("Login Success");
-        navigate(from, { replace: true });
+        navigate("/");
 
         console.log(user);
       })

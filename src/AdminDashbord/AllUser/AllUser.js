@@ -2,11 +2,27 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const AllUser = () => {
-  const { data: allUser = [] } = useQuery({
+  const { data: allUser = [], refetch } = useQuery({
     queryKey: ["allUser"],
     queryFn: () =>
       fetch("http://localhost:5000/alluer").then((res) => res.json()),
   });
+
+  // delete User
+  const deleteHanler = (id) => {
+    const agree = window.confirm("are you sure you want to delete User?");
+    if (agree) {
+      fetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          refetch();
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   return (
     <div>
@@ -70,7 +86,12 @@ const AllUser = () => {
                 </td>
 
                 <td>
-                  <button className="btn btn-xs ">Delete</button>
+                  <button
+                    onClick={() => deleteHanler(usr?._id)}
+                    className="btn btn-xs "
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

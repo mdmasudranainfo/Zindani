@@ -10,11 +10,15 @@ import WellComePage from "./Dashbord/wellComePage";
 import DashbordLayout from "./Layout/DashbordLayout";
 import Main from "./Layout/Main";
 import AllProduct from "./Pages/AllProduct/AllProduct";
+import Blog from "./Pages/Blog/Blog";
+import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import MyOrder from "./Pages/MyOrder/MyOrder";
 import Register from "./Pages/Register/Register";
+import AdminRoute from "./Route/AdminRoute/AdminRoute";
 import PrivateRoute from "./Route/PrivateRoute/PrivateRoute";
+import SallerRoute from "./Route/SallerRoute/SallerRoute";
 import AddProduct from "./SelarDashbord/AddProduct/AddProduct";
 import MyProduct from "./SelarDashbord/MyProduct/MyProduct";
 
@@ -22,6 +26,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -37,9 +42,9 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: "/allproduct",
-        element: <AllProduct></AllProduct>,
-        loader: () => fetch("http://localhost:5000/products"),
+        path: "/blog",
+        element: <Blog></Blog>,
+        loader: () => fetch("Blog.json"),
       },
       {
         path: "producs/:id",
@@ -85,31 +90,52 @@ const router = createBrowserRouter([
           {
             path: "/dashbord/myproduct",
             element: (
-              <PrivateRoute>
+              <SallerRoute>
+                {" "}
                 <MyProduct></MyProduct>
-              </PrivateRoute>
+              </SallerRoute>
             ),
           },
           {
             path: "/dashbord/addproduct/",
-            element: <AddProduct></AddProduct>,
+            element: (
+              <SallerRoute>
+                <AddProduct></AddProduct>
+              </SallerRoute>
+            ),
             loader: () => fetch("http://localhost:5000/category"),
           },
           {
             path: "/dashbord/alluser/",
-            element: <AllUser></AllUser>,
+            element: (
+              <AdminRoute>
+                <AllUser></AllUser>
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashbord/allseller/",
-            element: <AllSeller></AllSeller>,
+            element: (
+              <AdminRoute>
+                <AllSeller></AllSeller>
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashbord/allproduct/",
-            element: <TotalProduct></TotalProduct>,
+            element: (
+              <AdminRoute>
+                <TotalProduct></TotalProduct>
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashbord/report/",
-            element: <ReportItem></ReportItem>,
+            element: (
+              <AdminRoute>
+                <ReportItem></ReportItem>
+              </AdminRoute>
+            ),
           },
         ],
       },
