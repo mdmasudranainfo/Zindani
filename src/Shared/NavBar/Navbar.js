@@ -22,12 +22,6 @@ const Navbar = () => {
       <li>
         <Link to="/blog">Blog</Link>
       </li>
-
-      {user && (
-        <li>
-          <Link to="/myorders">My Orders</Link>
-        </li>
-      )}
     </>
   );
   return (

@@ -29,6 +29,11 @@ const Dashbord = () => {
               </div>
               <p>{user?.email}</p>
             </li>
+            {user && (
+              <li>
+                <Link to="/myorders">My Orders</Link>
+              </li>
+            )}
 
             {isSeller && (
               <li>
