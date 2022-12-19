@@ -90,7 +90,7 @@ const Register = () => {
   };
 
   return (
-    <div className="xl:ml-20 xl:w-5/12 mx-auto mt-5 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 p-5">
+    <div className=" xl:w-5/12 mx-auto mt-5 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 p-5">
       <h1 className="text-2xl font-semibold text-center my-3">Register</h1>
       <form onSubmit={registerHanler}>
         {/* <div className="flex flex-row items-center justify-center lg:justify-start">
