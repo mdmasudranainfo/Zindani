@@ -173,7 +173,7 @@ const AddProduct = () => {
           </div>
 
           <div>
-            <label className="text-gray-700 ">Product Picture</label>
+            <label className="text-gray-700 ">Product Categorys</label>
             <select name="category" className="select select-bordered w-full">
               {category?.map((cat) => (
                 <option key={cat?._id} value={cat?.name}>
