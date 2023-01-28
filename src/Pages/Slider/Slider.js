@@ -33,6 +33,11 @@ const Slider = () => {
       </div>
       <div className="col-span-2">
         <Swiper
+          loop
+          autoplay={{
+            delay: 50,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
           }}
@@ -60,7 +65,49 @@ const Slider = () => {
               />
             </div>
           </SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>
+            <div className=" relative">
+              <div className=" absolute sm:top-0 md:top-10 lg:top-16 sm:block hidden left-0 p-5 text-white ">
+                <h1 className="text-3xl font-bold">
+                  LG V30
+                  <br />
+                  Full Fresh
+                </h1>
+                <p>
+                  Your Life , Throught <br />
+                  Your Lens
+                </p>
+                <button className="btn btn-primary mt-3 btn-sm">Buy Now</button>
+              </div>
+              <img
+                className="w-full"
+                src="https://i.ibb.co/vcqYsxT/img2-top-store1.jpg"
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className=" relative">
+              <div className=" absolute sm:top-0 md:top-10 lg:top-16 sm:block hidden left-0 p-5 text-white ">
+                <h1 className="text-3xl font-bold">
+                  LG V30
+                  <br />
+                  Full Fresh
+                </h1>
+                <p>
+                  Your Life , Throught <br />
+                  Your Lens
+                </p>
+                <button className="btn btn-primary mt-3 btn-sm">Buy Now</button>
+              </div>
+              <img
+                className="w-full"
+                src="https://i.ibb.co/gws7cXV/img3-top-store1.jpg"
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
     </div>
