@@ -1,0 +1,25 @@
+.swiper-button-prev {
+  background-color: #4506cb;
+
+  color: white !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 100% !important;
+}
+.swiper-button-next {
+  background-color: #4506cb;
+
+  color: white !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 100% !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .swiper-button-prev {
+    display: none !important;
+  }
+  .swiper-button-next {
+    display: none !important;
+  }
+}

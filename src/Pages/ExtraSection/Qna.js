@@ -2,7 +2,7 @@ import React from "react";
 
 const Qna = () => {
   return (
-    <div className="lg:w-3/4 w-full mx-auto my-20">
+    <div data-aos="fade-up" className="lg:w-3/4 w-full mx-auto my-20">
       <h2 className="text-2xl text-center font-bold text-primary mb-5">QNA</h2>
 
       {/*  */}

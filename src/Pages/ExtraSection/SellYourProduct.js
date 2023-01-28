@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SellYourProduct = () => {
   return (
-    <div>
+    <div data-aos="fade-up">
       <div className="card lg:card-side bg-base-200 shadow-xl my-5">
         <figure className=" lg:w-6/12 md:w-full">
           <img

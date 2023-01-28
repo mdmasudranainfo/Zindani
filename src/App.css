@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.productCard {
+  flex-direction: row;
+}
+
+.BanarAd {
+  background-color: #2524246e !important;
+}

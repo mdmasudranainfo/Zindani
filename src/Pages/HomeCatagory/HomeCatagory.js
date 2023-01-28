@@ -24,7 +24,11 @@ const HomeCatagory = () => {
         </div>
         <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {categorys?.map((catagory) => (
-            <Link to={`producs/${catagory?.name}`} key={catagory?._id}>
+            <Link
+              data-aos="fade-up"
+              to={`producs/${catagory?.name}`}
+              key={catagory?._id}
+            >
               <div>
                 <div className="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
                   <img

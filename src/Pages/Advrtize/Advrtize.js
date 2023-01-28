@@ -27,7 +27,10 @@ const Advrtize = () => {
 
   return (
     <div className="">
-      <h1 className="text-3xl mb-5 font-bold text-primary text-center uppercase">
+      <h1
+        data-aos="fade-up"
+        className="text-3xl mb-5 font-bold text-primary text-center uppercase"
+      >
         Advrtized Products
       </h1>
       <div className="grid lg:grid-cols-2 gap-10">

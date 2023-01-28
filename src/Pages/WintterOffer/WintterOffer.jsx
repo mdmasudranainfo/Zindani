@@ -2,7 +2,7 @@ import React from "react";
 
 const WintterOffer = () => {
   return (
-    <div className="mt-4 ">
+    <div className="mt-4 " data-aos="fade-up">
       <div className=" grid grid-cols-2 bg-violet-200 rounded-md">
         <div className="flex justify-center">
           <img

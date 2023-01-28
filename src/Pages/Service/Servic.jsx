@@ -2,7 +2,10 @@ import React from "react";
 
 const Servic = () => {
   return (
-    <div className=" grid grid-cols-3 gap-5">
+    <div
+      data-aos="fade-up"
+      className=" grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-5"
+    >
       <div className=" flex justify-center flex-col items-center p-4 border-r-2 shadow-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"

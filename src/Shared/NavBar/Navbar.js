@@ -56,7 +56,11 @@ const Navbar = () => {
           to="/"
           className="btn btn-ghost normal-case text-xl text-primary font-bold"
         >
-          ZDN
+          <img
+            className="w-[50px]"
+            src="https://i.ibb.co/bg7vxZF/Green-Modern-Real-Estate-Business-Logo-1-removebg-preview.png"
+            alt=""
+          />
         </Link>
         <label htmlFor="dashbord-drawer" className="btn btn-primary lg:hidden ">
           x
